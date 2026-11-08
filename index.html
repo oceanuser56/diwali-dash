@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diwali Dash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== Shared drawings (defined once, reused with <use>) ===== -->
+<svg class="defs" aria-hidden="true" width="0" height="0">
+  <defs>
+    <pattern id="motif" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M32 18 C38 26 38 38 32 46 C26 38 26 26 32 18 Z" fill="#F2C14E" opacity="0.10"/>
+      <circle cx="0" cy="0" r="3" fill="#F2C14E" opacity="0.14"/>
+      <circle cx="64" cy="0" r="3" fill="#F2C14E" opacity="0.14"/>
+      <circle cx="0" cy="64" r="3" fill="#F2C14E" opacity="0.14"/>
+      <circle cx="64" cy="64" r="3" fill="#F2C14E" opacity="0.14"/>
+    </pattern>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#140F36"/>
+      <stop offset="0.6" stop-color="#36195A"/>
+      <stop offset="1" stop-color="#6E2A5C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Mandala -->
+  <symbol id="mandala" viewBox="-100 -100 200 200">
+    <circle r="96" fill="none" stroke="#F2C14E" stroke-width="2" stroke-dasharray="2 6"/>
+    <g fill="#E8A33A" stroke="#7A1414" stroke-width="1.5">
+      <ellipse cx="0" cy="-72" rx="13" ry="22"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(30)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(60)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(120)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(150)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(210)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(240)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(300)"/>
+      <ellipse cx="0" cy="-72" rx="13" ry="22" transform="rotate(330)"/>
+    </g>
+    <circle r="50" fill="#9E1C1C" stroke="#F2C14E" stroke-width="3"/>
+    <g fill="#F2C14E">
+      <ellipse cx="0" cy="-34" rx="7" ry="14"/>
+      <ellipse cx="0" cy="-34" rx="7" ry="14" transform="rotate(45)"/>
+      <ellipse cx="0" cy="-34" rx="7" ry="14" transform="rotate(90)"/>
+      <ellipse cx="0" cy="-34" rx="7" ry="14" transform="rotate(135)"/>
+      <ellipse cx="0" cy="-34" rx="7" ry="14" transform="rotate(180)"/>
+      <ellipse cx="0" cy="-34" rx="7" ry="14" transform="rotate(225)"/>
+      <ellipse cx="0" cy="-34" rx="7" ry="14" transform="rotate(270)"/>
+      <ellipse cx="0" cy="-34" rx="7" ry="14" transform="rotate(315)"/>
+    </g>
+    <circle r="16" fill="#FFC93C" stroke="#7A1414" stroke-width="2"/>
+    <circle r="6" fill="#7A1414"/>
+  </symbol>
+
+  <!-- Ram (body only; face added separately) -->
+  <symbol id="ram-body" viewBox="0 0 180 260">
+    <ellipse cx="90" cy="250" rx="52" ry="7" fill="#140A10" opacity="0.6"/>
+    <rect x="66" y="190" width="20" height="56" rx="6" fill="#FFF4DC" stroke="#2B1A1A" stroke-width="3"/>
+    <rect x="94" y="190" width="20" height="56" rx="6" fill="#FFF4DC" stroke="#2B1A1A" stroke-width="3"/>
+    <ellipse cx="74" cy="248" rx="13" ry="6" fill="#6B3A1E" stroke="#2B1A1A" stroke-width="2.5"/>
+    <ellipse cx="106" cy="248" rx="13" ry="6" fill="#6B3A1E" stroke="#2B1A1A" stroke-width="2.5"/>
+    <path d="M56 120 Q90 108 124 120 L134 204 Q90 214 46 204 Z" fill="#2F6FB5" stroke="#2B1A1A" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M78 116 L90 160 L102 116" fill="none" stroke="#F2C14E" stroke-width="4"/>
+    <circle cx="90" cy="136" r="3" fill="#F2C14E"/>
+    <circle cx="90" cy="148" r="3" fill="#F2C14E"/>
+    <path d="M50 196 Q90 204 130 196" fill="none" stroke="#F2C14E" stroke-width="3"/>
+    <path d="M58 124 Q40 150 44 180" fill="none" stroke="#2B1A1A" stroke-width="16" stroke-linecap="round"/>
+    <path d="M58 124 Q40 150 44 180" fill="none" stroke="#2F6FB5" stroke-width="10" stroke-linecap="round"/>
+    <path d="M122 124 Q140 150 136 180" fill="none" stroke="#2B1A1A" stroke-width="16" stroke-linecap="round"/>
+    <path d="M122 124 Q140 150 136 180" fill="none" stroke="#2F6FB5" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="44" cy="186" r="8" fill="#C98A64" stroke="#2B1A1A" stroke-width="2.5"/>
+    <circle cx="136" cy="186" r="8" fill="#C98A64" stroke="#2B1A1A" stroke-width="2.5"/>
+    <circle cx="51" cy="72" r="9" fill="#C98A64" stroke="#2B1A1A" stroke-width="3"/>
+    <circle cx="129" cy="72" r="9" fill="#C98A64" stroke="#2B1A1A" stroke-width="3"/>
+    <circle cx="90" cy="70" r="40" fill="#C98A64" stroke="#2B1A1A" stroke-width="3"/>
+    <path d="M52 56 Q56 30 90 28 Q124 30 128 56 Q110 44 90 46 Q70 44 52 56 Z" fill="#2B1A1A"/>
+    <path d="M58 40 L62 14 Q90 6 118 14 L122 40 Q90 32 58 40 Z" fill="#E8742A" stroke="#2B1A1A" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M60 34 Q90 26 120 34" fill="none" stroke="#F2C14E" stroke-width="4"/>
+    <rect x="87" y="48" width="6" height="12" rx="3" fill="#D9342B"/>
+  </symbol>
+
+  <!-- Laxmi (body only; face added separately) -->
+  <symbol id="laxmi-body" viewBox="0 0 180 260">
+    <ellipse cx="90" cy="250" rx="58" ry="7" fill="#140A10" opacity="0.6"/>
+    <path d="M48 70 Q40 130 50 170 L130 170 Q140 130 132 70 Z" fill="#2B1A1A"/>
+    <path d="M62 118 Q90 110 118 118 L150 244 Q90 256 30 244 Z" fill="#D63384" stroke="#2B1A1A" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M34 232 Q90 244 146 232" fill="none" stroke="#F2C14E" stroke-width="7"/>
+    <circle cx="70" cy="200" r="3" fill="#F2C14E"/>
+    <circle cx="90" cy="206" r="3" fill="#F2C14E"/>
+    <circle cx="110" cy="200" r="3" fill="#F2C14E"/>
+    <circle cx="80" cy="172" r="3" fill="#F2C14E"/>
+    <circle cx="100" cy="172" r="3" fill="#F2C14E"/>
+    <rect x="64" y="112" width="52" height="30" rx="8" fill="#F28C28" stroke="#2B1A1A" stroke-width="3"/>
+    <path d="M64 114 L120 112 L146 236 L128 240 Z" fill="#FFC93C" stroke="#2B1A1A" stroke-width="3" stroke-linejoin="round" opacity="0.95"/>
+    <path d="M62 120 Q46 146 52 172" fill="none" stroke="#2B1A1A" stroke-width="15" stroke-linecap="round"/>
+    <path d="M62 120 Q46 146 52 172" fill="none" stroke="#C98A64" stroke-width="9" stroke-linecap="round"/>
+    <path d="M118 120 Q134 146 128 172" fill="none" stroke="#2B1A1A" stroke-width="15" stroke-linecap="round"/>
+    <path d="M118 120 Q134 146 128 172" fill="none" stroke="#C98A64" stroke-width="9" stroke-linecap="round"/>
+    <rect x="44" y="160" width="14" height="6" rx="3" fill="#F2C14E"/>
+    <rect x="122" y="160" width="14" height="6" rx="3" fill="#F2C14E"/>
+    <circle cx="90" cy="70" r="40" fill="#C98A64" stroke="#2B1A1A" stroke-width="3"/>
+    <g fill="#F2C14E" stroke="#2B1A1A" stroke-width="1.5">
+      <circle cx="76" cy="113" r="4.5"/><circle cx="84" cy="118" r="4.5"/>
+      <circle cx="96" cy="118" r="4.5"/><circle cx="104" cy="113" r="4.5"/>
+      <circle cx="90" cy="121" r="5" fill="#D9342B"/>
+    </g>
+    <path d="M50 66 Q50 28 90 28 Q130 28 130 66 Q118 46 90 44 Q62 46 50 66 Z" fill="#2B1A1A"/>
+    <path d="M90 30 L90 46" stroke="#D9342B" stroke-width="3"/>
+    <circle cx="90" cy="56" r="4" fill="#D9342B"/>
+    <circle cx="52" cy="92" r="5" fill="none" stroke="#F2C14E" stroke-width="3"/>
+    <circle cx="128" cy="92" r="5" fill="none" stroke="#F2C14E" stroke-width="3"/>
+  </symbol>
+
+  <!-- Faces -->
+  <symbol id="face-ram" viewBox="0 0 180 260">
+    <circle cx="75" cy="72" r="4.5" fill="#2B1A1A"/>
+    <circle cx="105" cy="72" r="4.5" fill="#2B1A1A"/>
+    <ellipse cx="66" cy="84" rx="7" ry="4" fill="#E86A5A" opacity="0.7"/>
+    <ellipse cx="114" cy="84" rx="7" ry="4" fill="#E86A5A" opacity="0.7"/>
+    <path d="M80 88 Q90 98 100 88" fill="#7A1414" stroke="#2B1A1A" stroke-width="2.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="face-laxmi" viewBox="0 0 180 260">
+    <path d="M70 72 Q75 66 80 72" fill="none" stroke="#2B1A1A" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M100 72 Q105 66 110 72" fill="none" stroke="#2B1A1A" stroke-width="3.5" stroke-linecap="round"/>
+    <ellipse cx="66" cy="84" rx="7" ry="4" fill="#E86A5A" opacity="0.7"/>
+    <ellipse cx="114" cy="84" rx="7" ry="4" fill="#E86A5A" opacity="0.7"/>
+    <path d="M78 86 Q90 100 102 86 Z" fill="#7A1414" stroke="#2B1A1A" stroke-width="2.5" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="face-dizzy" viewBox="0 0 180 260">
+    <path d="M69 70 L81 76 M69 76 L81 70" stroke="#2B1A1A" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M99 70 L111 76 M99 76 L111 70" stroke="#2B1A1A" stroke-width="3.5" stroke-linecap="round"/>
+    <ellipse cx="66" cy="86" rx="7" ry="4" fill="#E86A5A" opacity="0.7"/>
+    <ellipse cx="114" cy="86" rx="7" ry="4" fill="#E86A5A" opacity="0.7"/>
+    <ellipse cx="90" cy="94" rx="7" ry="6" fill="#7A1414" stroke="#2B1A1A" stroke-width="2.5"/>
+  </symbol>
+
+  <!-- Aunty -->
+  <symbol id="aunty" viewBox="0 0 180 260">
+    <ellipse cx="90" cy="250" rx="54" ry="7" fill="#140A10" opacity="0.6"/>
+    <path d="M58 116 Q90 106 122 116 L138 246 Q90 256 42 246 Z" fill="#2E8B57" stroke="#2B1A1A" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M40 236 Q90 248 140 236" fill="none" stroke="#F2C14E" stroke-width="6"/>
+    <path d="M62 116 L120 112 L132 240 L116 244 Z" fill="#7FD1A0" stroke="#2B1A1A" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M60 120 Q44 146 50 176" fill="none" stroke="#2B1A1A" stroke-width="15" stroke-linecap="round"/>
+    <path d="M60 120 Q44 146 50 176" fill="none" stroke="#B9775A" stroke-width="9" stroke-linecap="round"/>
+    <path d="M120 120 Q140 130 150 104" fill="none" stroke="#2B1A1A" stroke-width="15" stroke-linecap="round"/>
+    <path d="M120 120 Q140 130 150 104" fill="none" stroke="#B9775A" stroke-width="9" stroke-linecap="round"/>
+    <circle cx="90" cy="70" r="40" fill="#B9775A" stroke="#2B1A1A" stroke-width="3"/>
+    <path d="M50 62 Q52 30 90 30 Q128 30 130 62 Q112 46 90 46 Q68 46 50 62 Z" fill="#2B1A1A"/>
+    <circle cx="122" cy="40" r="15" fill="#2B1A1A"/>
+    <circle cx="90" cy="56" r="5" fill="#D9342B"/>
+    <circle cx="75" cy="74" r="4.5" fill="#2B1A1A"/>
+    <circle cx="105" cy="74" r="4.5" fill="#2B1A1A"/>
+    <path d="M68 64 L80 66" stroke="#2B1A1A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M112 64 L100 66" stroke="#2B1A1A" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="90" cy="92" rx="9" ry="6" fill="#7A1414" stroke="#2B1A1A" stroke-width="2.5"/>
+  </symbol>
+
+  <!-- Uncle -->
+  <symbol id="uncle" viewBox="0 0 180 260">
+    <ellipse cx="90" cy="250" rx="50" ry="7" fill="#140A10" opacity="0.6"/>
+    <rect x="66" y="196" width="20" height="50" rx="6" fill="#FFF4DC" stroke="#2B1A1A" stroke-width="3"/>
+    <rect x="94" y="196" width="20" height="50" rx="6" fill="#FFF4DC" stroke="#2B1A1A" stroke-width="3"/>
+    <path d="M56 120 Q90 108 124 120 L132 206 Q90 216 48 206 Z" fill="#E9D8B4" stroke="#2B1A1A" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="90" cy="138" r="3" fill="#7A1414"/>
+    <circle cx="90" cy="152" r="3" fill="#7A1414"/>
+    <circle cx="90" cy="166" r="3" fill="#7A1414"/>
+    <path d="M58 124 Q40 150 44 182" fill="none" stroke="#2B1A1A" stroke-width="16" stroke-linecap="round"/>
+    <path d="M58 124 Q40 150 44 182" fill="none" stroke="#E9D8B4" stroke-width="10" stroke-linecap="round"/>
+    <path d="M122 124 Q140 150 136 182" fill="none" stroke="#2B1A1A" stroke-width="16" stroke-linecap="round"/>
+    <path d="M122 124 Q140 150 136 182" fill="none" stroke="#E9D8B4" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="90" cy="70" r="40" fill="#C98A64" stroke="#2B1A1A" stroke-width="3"/>
+    <path d="M52 58 Q60 34 90 32 Q120 34 128 58 Q118 50 112 48 L68 48 Q60 50 52 58 Z" fill="#9A9A9A"/>
+    <circle cx="74" cy="72" r="11" fill="#FFF4DC" fill-opacity="0.35" stroke="#2B1A1A" stroke-width="3"/>
+    <circle cx="106" cy="72" r="11" fill="#FFF4DC" fill-opacity="0.35" stroke="#2B1A1A" stroke-width="3"/>
+    <line x1="85" y1="72" x2="95" y2="72" stroke="#2B1A1A" stroke-width="3"/>
+    <circle cx="74" cy="73" r="3.5" fill="#2B1A1A"/>
+    <circle cx="106" cy="73" r="3.5" fill="#2B1A1A"/>
+    <path d="M72 90 Q90 82 108 90 Q90 96 72 90 Z" fill="#6B6B6B" stroke="#2B1A1A" stroke-width="2"/>
+  </symbol>
+</svg>
+
+<main id="stage">
+
+  <!-- ============ SCREEN 1: SELECT YOUR CHARACTER ============ -->
+  <section id="screen-select" class="screen screen--red is-active" aria-label="Select your character">
+    <svg class="bg-pattern" aria-hidden="true"><rect width="100%" height="100%" fill="url(#motif)"/></svg>
+    <svg class="mandala mandala--tl" aria-hidden="true"><use href="#mandala"/></svg>
+    <svg class="mandala mandala--br" aria-hidden="true"><use href="#mandala"/></svg>
+    <div class="toran-rope" aria-hidden="true"></div>
+    <div class="toran" aria-hidden="true"></div>
+
+    <div class="banner">
+      <div class="banner__outer">
+        <div class="banner__inner"><h1>SELECT YOUR CHARACTER</h1></div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <button class="card" type="button" data-char="ram" aria-pressed="false" aria-label="Play as Ram">
+        <span class="card__frame">
+          <span class="card__inner"></span>
+          <svg class="card__char" viewBox="0 0 180 260" aria-hidden="true"><use href="#ram-body"/><use href="#face-ram"/></svg>
+          <span class="bubble">Hi, I'm Ram!</span>
+          <span class="bubble__tail" aria-hidden="true"></span>
+        </span>
+      </button>
+      <button class="card" type="button" data-char="laxmi" aria-pressed="false" aria-label="Play as Laxmi">
+        <span class="card__frame">
+          <span class="card__inner"></span>
+          <svg class="card__char" viewBox="0 0 180 260" aria-hidden="true"><use href="#laxmi-body"/><use href="#face-laxmi"/></svg>
+          <span class="bubble">Hi, I'm Laxmi!</span>
+          <span class="bubble__tail" aria-hidden="true"></span>
+        </span>
+      </button>
+    </div>
+
+    <div class="go-row">
+      <p class="go-hint" id="go-hint">Tap a character to begin</p>
+      <button class="btn btn--go" id="btn-go" type="button" hidden>GO</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN 2: START ============ -->
+  <section id="screen-start" class="screen screen--night" aria-label="Ready to run">
+    <svg class="scene" viewBox="0 0 1280 720" aria-hidden="true">
+      <rect width="1280" height="560" fill="url(#sky)"/>
+
+      <!-- stars -->
+      <g fill="#FFF1C1">
+        <circle cx="80" cy="60" r="1.6"/><circle cx="190" cy="140" r="1.2"/><circle cx="430" cy="40" r="1.8"/>
+        <circle cx="560" cy="110" r="1.2"/><circle cx="700" cy="50" r="1.5"/><circle cx="830" cy="150" r="1.2"/>
+        <circle cx="1120" cy="50" r="1.8"/><circle cx="1230" cy="160" r="1.3"/><circle cx="640" cy="200" r="1.1"/>
+      </g>
+
+      <!-- sky fireworks -->
+      <g stroke="#FFC93C" stroke-width="3" stroke-linecap="round">
+        <line x1="980" y1="120" x2="980" y2="62"/><line x1="980" y1="120" x2="1021" y2="79"/>
+        <line x1="980" y1="120" x2="1038" y2="120"/><line x1="980" y1="120" x2="1021" y2="161"/>
+        <line x1="980" y1="120" x2="980" y2="178"/><line x1="980" y1="120" x2="939" y2="161"/>
+        <line x1="980" y1="120" x2="922" y2="120"/><line x1="980" y1="120" x2="939" y2="79"/>
+      </g>
+      <g fill="#FF7AB6">
+        <circle cx="980" cy="52" r="5"/><circle cx="1028" cy="72" r="5"/><circle cx="1048" cy="120" r="5"/>
+        <circle cx="1028" cy="168" r="5"/><circle cx="980" cy="188" r="5"/><circle cx="932" cy="168" r="5"/>
+        <circle cx="912" cy="120" r="5"/><circle cx="932" cy="72" r="5"/>
+      </g>
+      <g stroke="#7FE0FF" stroke-width="2.5" stroke-linecap="round">
+        <line x1="300" y1="90" x2="300" y2="54"/><line x1="300" y1="90" x2="325" y2="65"/>
+        <line x1="300" y1="90" x2="336" y2="90"/><line x1="300" y1="90" x2="325" y2="115"/>
+        <line x1="300" y1="90" x2="300" y2="126"/><line x1="300" y1="90" x2="275" y2="115"/>
+        <line x1="300" y1="90" x2="264" y2="90"/><line x1="300" y1="90" x2="275" y2="65"/>
+      </g>
+      <circle cx="300" cy="90" r="5" fill="#FFF1C1"/>
+      <path d="M760 520 Q770 380 800 260" fill="none" stroke="#FFC93C" stroke-width="2" stroke-dasharray="4 8" opacity="0.7"/>
+
+      <!-- apartment blocks with fairy lights -->
+      <rect x="190" y="170" width="220" height="390" fill="#4B2445" stroke="#2A1328" stroke-width="3"/>
+      <rect x="30" y="250" width="200" height="310" fill="#62304F" stroke="#2A1328" stroke-width="3"/>
+      <g fill="#FFD27A">
+        <rect x="60" y="290" width="36" height="44"/><rect x="130" y="290" width="36" height="44" fill="#3A1A33"/>
+        <rect x="60" y="370" width="36" height="44" fill="#3A1A33"/><rect x="130" y="370" width="36" height="44"/>
+        <rect x="60" y="450" width="36" height="44"/><rect x="130" y="450" width="36" height="44"/>
+        <rect x="250" y="210" width="34" height="42"/><rect x="320" y="210" width="34" height="42" fill="#3A1A33"/>
+        <rect x="250" y="290" width="34" height="42" fill="#3A1A33"/><rect x="320" y="290" width="34" height="42"/>
+        <rect x="250" y="370" width="34" height="42"/><rect x="320" y="370" width="34" height="42"/>
+        <rect x="250" y="450" width="34" height="42"/><rect x="320" y="450" width="34" height="42" fill="#3A1A33"/>
+      </g>
+      <g stroke="#2A1328" stroke-width="2" fill="none">
+        <path d="M44 252 Q44 400 46 556"/><path d="M114 252 Q112 420 114 556"/><path d="M210 172 Q210 360 212 556"/>
+        <path d="M300 172 Q298 360 300 556"/><path d="M392 172 Q392 360 394 556"/>
+      </g>
+      <g id="fairy-lights"></g>
+
+      <!-- houses with marigold garlands -->
+      <rect x="890" y="390" width="120" height="170" fill="#7A3B3B" stroke="#2A1328" stroke-width="3"/>
+      <rect x="1000" y="320" width="150" height="240" fill="#8E4A3A" stroke="#2A1328" stroke-width="3"/>
+      <rect x="1140" y="390" width="130" height="170" fill="#7A3B3B" stroke="#2A1328" stroke-width="3"/>
+      <g fill="#FFD27A" stroke="#2A1328" stroke-width="2">
+        <rect x="918" y="440" width="60" height="70"/><rect x="1035" y="380" width="80" height="90"/><rect x="1172" y="440" width="64" height="70"/>
+      </g>
+      <g stroke="#2A1328" stroke-width="2">
+        <line x1="948" y1="440" x2="948" y2="510"/><line x1="918" y1="475" x2="978" y2="475"/>
+        <line x1="1075" y1="380" x2="1075" y2="470"/><line x1="1035" y1="425" x2="1115" y2="425"/>
+        <line x1="1204" y1="440" x2="1204" y2="510"/><line x1="1172" y1="475" x2="1236" y2="475"/>
+      </g>
+      <g fill="#F28C28" stroke="#9A4A0E" stroke-width="1.5">
+        <circle cx="898" cy="400" r="7"/><circle cx="914" cy="410" r="7" fill="#FFC93C"/><circle cx="932" cy="416" r="7"/><circle cx="950" cy="418" r="7" fill="#FFC93C"/><circle cx="968" cy="416" r="7"/><circle cx="986" cy="410" r="7" fill="#FFC93C"/><circle cx="1002" cy="400" r="7"/>
+        <circle cx="1010" cy="330" r="8"/><circle cx="1028" cy="344" r="8" fill="#FFC93C"/><circle cx="1048" cy="354" r="8"/><circle cx="1075" cy="358" r="8" fill="#FFC93C"/><circle cx="1102" cy="354" r="8"/><circle cx="1122" cy="344" r="8" fill="#FFC93C"/><circle cx="1140" cy="330" r="8"/>
+        <circle cx="1150" cy="400" r="7"/><circle cx="1166" cy="410" r="7" fill="#FFC93C"/><circle cx="1184" cy="416" r="7"/><circle cx="1204" cy="418" r="7" fill="#FFC93C"/><circle cx="1224" cy="416" r="7"/><circle cx="1242" cy="410" r="7" fill="#FFC93C"/><circle cx="1260" cy="400" r="7"/>
+      </g>
+
+      <!-- street -->
+      <rect y="540" width="1280" height="24" fill="#6A4A55"/>
+      <rect y="564" width="1280" height="156" fill="#3B2A33"/>
+      <line x1="0" y1="660" x2="1280" y2="660" stroke="#8C7380" stroke-width="5" stroke-dasharray="40 36"/>
+
+      <!-- diyas -->
+      <path d="M470 552 Q482 564 494 552 Z" fill="#C2410C" stroke="#2A1328" stroke-width="2"/><ellipse cx="482" cy="544" rx="3" ry="6" fill="#FFC93C"/>
+      <path d="M560 552 Q572 564 584 552 Z" fill="#C2410C" stroke="#2A1328" stroke-width="2"/><ellipse cx="572" cy="544" rx="3" ry="6" fill="#FFC93C"/>
+      <path d="M850 552 Q862 564 874 552 Z" fill="#C2410C" stroke="#2A1328" stroke-width="2"/><ellipse cx="862" cy="544" rx="3" ry="6" fill="#FFC93C"/>
+
+      <!-- anar firecracker -->
+      <path d="M748 560 L772 560 L766 528 L754 528 Z" fill="#D9342B" stroke="#2A1328" stroke-width="2"/>
+      <g stroke="#FFD27A" stroke-width="2" stroke-linecap="round">
+        <line x1="760" y1="526" x2="760" y2="450"/><line x1="760" y1="526" x2="730" y2="460"/><line x1="760" y1="526" x2="790" y2="460"/>
+        <line x1="760" y1="526" x2="710" y2="480"/><line x1="760" y1="526" x2="810" y2="480"/>
+      </g>
+      <g fill="#FFF1C1">
+        <circle cx="760" cy="444" r="3"/><circle cx="727" cy="455" r="3"/><circle cx="793" cy="455" r="3"/><circle cx="706" cy="476" r="3"/><circle cx="814" cy="476" r="3"/>
+      </g>
+
+      <!-- rangoli -->
+      <g transform="translate(300 640) scale(1 0.36)">
+        <circle r="120" fill="#F28C28" stroke="#FFF4DC" stroke-width="5"/>
+        <circle r="92" fill="#2F6FB5"/>
+        <g fill="#D63384" stroke="#FFF4DC" stroke-width="3">
+          <ellipse cx="0" cy="-62" rx="18" ry="30"/><ellipse cx="0" cy="-62" rx="18" ry="30" transform="rotate(45)"/>
+          <ellipse cx="0" cy="-62" rx="18" ry="30" transform="rotate(90)"/><ellipse cx="0" cy="-62" rx="18" ry="30" transform="rotate(135)"/>
+          <ellipse cx="0" cy="-62" rx="18" ry="30" transform="rotate(180)"/><ellipse cx="0" cy="-62" rx="18" ry="30" transform="rotate(225)"/>
+          <ellipse cx="0" cy="-62" rx="18" ry="30" transform="rotate(270)"/><ellipse cx="0" cy="-62" rx="18" ry="30" transform="rotate(315)"/>
+        </g>
+        <circle r="28" fill="#FFC93C" stroke="#FFF4DC" stroke-width="3"/>
+        <circle r="10" fill="#3E8E3A"/>
+      </g>
+    </svg>
+
+    <!-- relatives -->
+    <div class="relatives">
+      <svg class="relative" viewBox="0 0 180 260" role="img" aria-label="Aunty in a saree"><use href="#aunty"/></svg>
+      <svg class="relative relative--overlap" viewBox="0 0 180 260" role="img" aria-label="Uncle with glasses in a kurta"><use href="#uncle"/></svg>
+    </div>
+    <div class="bubble bubble--relative">Beta, what marks did you get?</div>
+
+    <!-- player -->
+    <div class="player">
+      <svg id="start-player" viewBox="0 0 180 260" role="img" aria-label="Your character"><use href="#laxmi-body"/><use href="#face-laxmi"/></svg>
+    </div>
+
+    <!-- score -->
+    <div class="scorebox" role="status" aria-label="Score">
+      <div class="scorebox__cell">
+        <span class="scorebox__label">SCORE</span>
+        <span class="scorebox__value" id="hud-score">0</span>
+      </div>
+      <div class="scorebox__cell scorebox__cell--best">
+        <span class="scorebox__label">BEST</span>
+        <span class="scorebox__value scorebox__value--sm" id="hud-best">0</span>
+      </div>
+    </div>
+
+    <button class="btn-back" id="btn-back" type="button">← Change character</button>
+
+    <div class="start-col">
+      <p class="pill-hint">Flick your finger up to jump, left or right to switch lanes</p>
+      <button class="btn btn--start" id="btn-start" type="button">START</button>
+    </div>
+  </section>
+
+  <!-- ============ SCREEN 3: GAME OVER ============ -->
+  <section id="screen-game" class="screen screen--night" aria-label="Diwali Dash gameplay">
+    <div id="game-canvas"></div>
+    <div id="music-hud" aria-live="polite"><div>🎵 <span id="music-title">Soundtrack ready</span></div><div id="music-speed">MEDIUM · 1.00×</div><button id="music-toggle" type="button">🔊 Mute</button></div>
+    <div class="game-hud"><span>🪔 SCORE <b id="game-score">0</b></span><span>BEST <b id="game-best">0</b></span></div>
+    <div id="family-dialogue" class="family-dialogue" aria-live="polite">Beta, how much did you score on your exam?</div>
+    <div class="game-help">👆 Swipe ← → to change lane · Swipe ↑ to jump · Keyboard ← → ↑</div>
+    <aside id="hand-ui"><strong>🪔 Finger Controls</strong><div id="preview"><video id="webcam" autoplay playsinline muted></video><canvas id="hand-overlay"></canvas></div><button id="camera-button" type="button">Start Camera</button><div id="gesture-status">Camera not started</div></aside>
+  </section>
+  <section id="screen-over" class="screen screen--red" aria-label="Caught! Your score">
+    <svg class="bg-pattern" aria-hidden="true"><rect width="100%" height="100%" fill="url(#motif)"/></svg>
+    <div class="toran-rope" aria-hidden="true"></div>
+    <div class="toran" aria-hidden="true"></div>
+
+    <div class="over">
+      <div class="card card--static">
+        <span class="card__frame card__frame--lg">
+          <span class="card__inner"></span>
+          <svg id="over-player" class="card__char card__char--lg" viewBox="0 0 180 260" role="img" aria-label="Your character"><use href="#ram-body"/><use href="#face-dizzy"/></svg>
+          <span class="caught-tag">CAUGHT!</span>
+        </span>
+      </div>
+
+      <div class="results">
+        <div class="result result--score">
+          <span class="result__label">Your Score</span>
+          <span class="result__value" id="over-score">0</span>
+        </div>
+        <div class="result result--best">
+          <span class="result__label">Highest Score</span>
+          <span class="result__value result__value--sm" id="over-best">0</span>
+        </div>
+        <p class="need" id="over-need">You need <span class="need__pts" id="over-need-pts">0</span> pts to reach the highest score</p>
+        <p class="record" id="over-record" hidden>New highest score! The relatives are impressed.</p>
+        <button class="btn btn--retry" id="btn-retry" type="button">
+          <span>Try Again</span>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+<script src="./music.js"></script>
+<script type="module" src="./main.js"></script>
+<script type="module" src="./handTracking.js"></script>
+</body>
+</html>
